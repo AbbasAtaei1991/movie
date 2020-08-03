@@ -1,8 +1,11 @@
 package com.example.movie.data.entities
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "details")
 data class Detail(
     @SerializedName("Title")
     val title: String,
@@ -32,8 +35,6 @@ data class Detail(
     val awards: String,
     @SerializedName("Poster")
     val poster: String,
-    @SerializedName("Ratings")
-    val ratings: List<Rating>,
     @SerializedName("Metascore")
     val metascore: String,
     @SerializedName("imdbRating")
@@ -41,6 +42,7 @@ data class Detail(
     @SerializedName("imdbVotes")
     val imdbVotes: String,
     @SerializedName("imdbID")
+    @PrimaryKey
     val imdbID: String,
     @SerializedName("Type")
     val type: String,

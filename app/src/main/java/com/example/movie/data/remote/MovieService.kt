@@ -14,9 +14,9 @@ interface MovieService {
         @Query("s") s: String
     ): Response<MovieList>
 
-    @GET("")
+    @GET("/")
     suspend fun getDetail(
-        @Query("api_key") apiKey: String,
+        @Query("apiKey") apiKey: String,
         @Query("i") i: String
     ): Response<Detail>
 }
