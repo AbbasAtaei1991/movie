@@ -8,12 +8,16 @@
     <fragment
         android:id="@+id/moviesFragment"
         android:name="com.example.movie.ui.movies.MoviesFragment"
-        android:label="MoviesFragment"
-        tools:layout="@layout/fragment_movies"/>
+        android:label="Movies"
+        tools:layout="@layout/fragment_movies">
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="com.example.movie.ui.moviedetail.MovieDetailFragment"
-        android:label="MovieDetailFragment"
+        android:label="MovieDetail"
         tools:layout="@layout/fragment_movie"/>
 </navigation>
