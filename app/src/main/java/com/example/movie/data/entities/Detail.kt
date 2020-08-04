@@ -8,52 +8,52 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "details")
 data class Detail(
     @SerializedName("Title")
-    val title: String,
+    val title: String?,
     @SerializedName("Year")
-    val year: String,
+    val year: String?,
     @SerializedName("Rated")
-    val rated: String,
+    val rated: String?,
     @SerializedName("Released")
-    val released: String,
+    val released: String?,
     @SerializedName("Runtime")
-    val runtime: String,
+    val runtime: String?,
     @SerializedName("Genre")
-    val genre: String,
+    val genre: String?,
     @SerializedName("Director")
-    val director: String,
+    val director: String?,
     @SerializedName("Writer")
-    val writer: String,
+    val writer: String?,
     @SerializedName("Actors")
-    val actors: String,
+    val actors: String?,
     @SerializedName("Plot")
-    val plot: String,
+    val plot: String?,
     @SerializedName("Language")
     val language: String,
     @SerializedName("Country")
-    val country: String,
+    val country: String?,
     @SerializedName("Awards")
-    val awards: String,
+    val awards: String?,
     @SerializedName("Poster")
-    val poster: String,
+    val poster: String?,
     @SerializedName("Metascore")
-    val metascore: String,
+    val metascore: String?,
     @SerializedName("imdbRating")
-    val imdbRating: String,
+    val imdbRating: String?,
     @SerializedName("imdbVotes")
-    val imdbVotes: String,
+    val imdbVotes: String?,
     @SerializedName("imdbID")
     @PrimaryKey
     val imdbID: String,
     @SerializedName("Type")
-    val type: String,
+    val type: String?,
     @SerializedName("DVD")
-    val dVD: String,
+    val dVD: String?,
     @SerializedName("BoxOffice")
-    val boxOffice: String,
+    val boxOffice: String?,
     @SerializedName("Production")
-    val production: String,
+    val production: String?,
     @SerializedName("Website")
-    val website: String,
+    val website: String?,
     @SerializedName("Response")
-    val response: String
+    val response: String?
 )

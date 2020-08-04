@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.movie.data.entities.Detail
 import com.example.movie.databinding.FragmentMovieBinding
 import com.example.movie.utils.Resource
@@ -41,10 +40,15 @@ class MovieDetailFragment : Fragment() {
         viewModel.detail.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
-                    if (it.data != null)
-                        bindDetail(it.data!!)
-                    binding.progressBar.visibility = View.GONE
-                    binding.detailCl.visibility = View.VISIBLE
+                    if (it.data != null) {
+                        binding.detail = it.data
+                        binding.progressBar.visibility = View.GONE
+                        binding.detailCl.visibility = View.VISIBLE
+                    } else {
+                        binding.progressBar.visibility = View.GONE
+                        binding.detailCl.visibility = View.INVISIBLE
+                    }
+
                 }
 
                 Resource.Status.ERROR ->
@@ -56,18 +60,5 @@ class MovieDetailFragment : Fragment() {
                 }
             }
         })
-    }
-
-    private fun bindDetail(detail: Detail) {
-        binding.movieTitle.text = detail.title
-        binding.genre.text = detail.genre
-        binding.year.text = detail.year
-        binding.rated.text = detail.rated
-        binding.country.text = detail.country
-        binding.directorTv.text = detail.director
-        binding.writerTv.text = detail.writer
-        Glide.with(binding.root)
-            .load(detail.poster)
-            .into(binding.movieIv)
     }
 }
