@@ -46,13 +46,7 @@ class MovieViewHolder(private val itemBinding: MovieItemBinding, private val lis
     @SuppressLint("SetTextI18n")
     fun bind(item: Movie) {
         this.movie = item
-        itemBinding.titleTv.text = item.title
-        itemBinding.typeTv.text = item.type
-        itemBinding.yearTv.text = item.year
-        Glide.with(itemBinding.root)
-            .load(item.poster)
-            .centerCrop()
-            .into(itemBinding.posterIv)
+        itemBinding.movie = item
     }
 
     override fun onClick(v: View?) {

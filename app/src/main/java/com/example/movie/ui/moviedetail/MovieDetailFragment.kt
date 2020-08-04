@@ -8,9 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.bumptech.glide.Glide
-import com.example.movie.data.entities.Detail
 import com.example.movie.databinding.FragmentMovieBinding
+import com.example.movie.utils.NetworkCheck
 import com.example.movie.utils.Resource
 import com.example.movie.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,21 +41,22 @@ class MovieDetailFragment : Fragment() {
                 Resource.Status.SUCCESS -> {
                     if (it.data != null) {
                         binding.detail = it.data
-                        binding.progressBar.visibility = View.GONE
-                        binding.detailCl.visibility = View.VISIBLE
+                        binding.loading = false
+                        binding.isEmpty = false
                     } else {
-                        binding.progressBar.visibility = View.GONE
-                        binding.detailCl.visibility = View.INVISIBLE
+                        binding.loading = false
+                        binding.isEmpty = true
                     }
 
                 }
 
                 Resource.Status.ERROR ->
-                    Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
+                    if (NetworkCheck.isInternetAvailable(requireContext()))
+                        Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
 
                 Resource.Status.LOADING -> {
-                    binding.progressBar.visibility = View.VISIBLE
-                    binding.detailCl.visibility = View.GONE
+                    binding.loading = true
+                    binding.isEmpty = true
                 }
             }
         })

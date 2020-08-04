@@ -3,9 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="detail"
             type="com.example.movie.data.entities.Detail" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="isEmpty"
+            type="Boolean" />
     </data>
 
     <FrameLayout
@@ -16,6 +25,7 @@
             android:id="@+id/detail_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="@{isEmpty ? View.GONE : View.VISIBLE}"
             android:padding="16dp">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -188,7 +198,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:indeterminate="true"
-                android:visibility="gone"
+                android:visibility="@{loading ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

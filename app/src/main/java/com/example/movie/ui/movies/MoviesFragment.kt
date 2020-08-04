@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movie.R
 import com.example.movie.databinding.FragmentMoviesBinding
+import com.example.movie.utils.NetworkCheck
 import com.example.movie.utils.Resource
 import com.example.movie.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,7 +54,8 @@ class MoviesFragment : Fragment(), MovieAdapter.MovieItemListener {
                     if (!it.data.isNullOrEmpty()) adapter.setItems(ArrayList(it.data))
                 }
                 Resource.Status.ERROR ->
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    if (NetworkCheck.isInternetAvailable(requireContext()))
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
 
                 Resource.Status.LOADING ->
                     binding.progressBar.visibility = View.VISIBLE
